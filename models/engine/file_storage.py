@@ -14,41 +14,30 @@ from models.place import Place
 
 
 class FileStorage():
-    """
-    serializes instances to a JSON file and
-    deserializes JSON file to instances
+    """ serializes instances to a JSON file and deserializes JSON file to instances
     """
 
-    __path = "file.json"
-    __object = {}
+    FilePath = "file.json"
+    Object = {}
 
     def all(self):
-        """
-        returns the dictionary __objects
-        """
-        return FileStorage.__object
+        """ returns the dictionary __objects """
+        return FileStorage.Object
 
     def new(self, obj):
-        """
-        sets in __objects the obj with key <obj class name>.id
-        """
+        """ sets in __objects the obj with key <obj class name>.id """
         key = "{}.{}".format(type(obj).__name__, obj.id)
-        FileStorage.__object[key] = obj
+        FileStorage.Object[key] = obj
 
     def save(self):
-        """
-        serializes __objects to the JSON file (path: __file_path)
-        """
-        with open(FileStorage.__path, 'w') as f:
+        """ serializes __objects to the JSON file (path: __file_path) """
+        with open(FileStorage.FilePath, 'w') as f:
             json.dump(
-                {k: v.to_dict() for k, v in FileStorage.__object.items()}, f)
+                {i: j.to_dict() for i, j in FileStorage.Object.items()}, f)
 
     def reload(self):
-        """
-        deserializes the JSON file to __objects only if the JSON
-        file exists; otherwise, does nothing
-        """
-        current_classes = {
+        """ Deserializes the JSON file to __objects only if the JSON file exists; otherwise, does nothing """
+        CurrentClasses = {
             'BaseModel': BaseModel,
             'User': User,
             'Amenity': Amenity,
@@ -58,20 +47,20 @@ class FileStorage():
             'Review': Review
         }
 
-        if not os.path.exists(FileStorage.__path):
+        if not os.path.exists(FileStorage.FilePath):
             return
 
-        with open(FileStorage.__path, 'r') as f:
-            deserialized = None
+        with open(FileStorage.FilePath, 'r') as f:
+            Deserialized = None
 
             try:
-                deserialized = json.load(f)
+                Deserialized = json.load(f)
             except json.JSONDecodeError:
                 pass
 
-            if deserialized is None:
+            if Deserialized is None:
                 return
 
-            FileStorage.__object = {
-                k: current_classes[k.split('.')[0]](**v)
-                for k, v in deserialized.items()}
+            FileStorage.Object = {
+                i: CurrentClasses[i.split('.')[0]](**j)
+                for i, j in Deserialized.items()}

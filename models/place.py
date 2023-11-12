@@ -27,14 +27,14 @@ class Place(BaseModel):
         amenity_ids
     """
 
-    name: str
-    user_id: str
-    city_id: str
-    description: str
-    number_bathrooms: int
-    price_by_night: int
-    number_rooms: int
-    longitude: float
-    latitude: float
-    max_guest: int
-    amenity_ids: list
+    name = ""
+    user_id = ""
+    city_id = ""
+    description = ""
+    number_bathrooms = 0
+    price_by_night = 0
+    number_rooms = 0
+    longitude = 0.0
+    latitude = 0.0
+    max_guest = 0
+    amenity_ids = []

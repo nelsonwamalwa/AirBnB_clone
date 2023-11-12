@@ -17,9 +17,9 @@ class TestState(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        FileStorage._FileStorage__objects = {}
-        if os.path.exists(FileStorage._FileStorage__file_path):
-            os.remove(FileStorage._FileStorage__file_path)
+        FileStorage.Object = {}
+        if os.path.exists(FileStorage.FilePath):
+            os.remove(FileStorage.FilePath)
 
     def test_params(self):
         s1 = State()

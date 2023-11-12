@@ -1,0 +1,11 @@
+# Cache files
+.idea
+__pycache__
+.vscode
+./*.pyc
+models/__pycache__
+
+# Test Files
+
+# Virtual Environment
+env

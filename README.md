@@ -17,7 +17,21 @@ A command interpreter to manipulate data without a visual interface, like in a S
 ## Usage
 
 ### Basic Usage
+Typical usage example:
 
+```bash
+    $ ./console
+    (hbnb)
+
+    (hbnb) help
+    Documented commands (type help <topic>):
+    ========================================
+    EOF  create  help  quit
+
+    (hbnb)
+    (hbnb) quit
+    $
+```
 ### Options
 
 ### Examples

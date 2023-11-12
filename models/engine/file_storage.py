@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """
-Module: file_storage.py
-
-Defines a `FileStorage` class.
+Module: file_storage.py defines a `FileStorage` class.
 """
 import os
 import json
@@ -21,43 +19,49 @@ class FileStorage():
     deserializes JSON file to instances
     """
 
-    __file_path = "file.json"
-    __objects = {}
+    __path = "file.json"
+    __object = {}
 
     def all(self):
         """
         returns the dictionary __objects
         """
-        return FileStorage.__objects
+        return FileStorage.__object
 
     def new(self, obj):
         """
         sets in __objects the obj with key <obj class name>.id
         """
         key = "{}.{}".format(type(obj).__name__, obj.id)
-        FileStorage.__objects[key] = obj
+        FileStorage.__object[key] = obj
 
     def save(self):
         """
         serializes __objects to the JSON file (path: __file_path)
         """
-        with open(FileStorage.__file_path, 'w') as f:
+        with open(FileStorage.__path, 'w') as f:
             json.dump(
-                {k: v.to_dict() for k, v in FileStorage.__objects.items()}, f)
+                {k: v.to_dict() for k, v in FileStorage.__object.items()}, f)
 
     def reload(self):
         """
         deserializes the JSON file to __objects only if the JSON
         file exists; otherwise, does nothing
         """
-        current_classes = {'BaseModel': BaseModel, 'User': User,
-                           'Amenity': Amenity, 'City': City, 'State': State,
-                           'Place': Place, 'Review': Review}
+        current_classes = {
+            'BaseModel': BaseModel,
+            'User': User,
+            'Amenity': Amenity,
+            'City': City,
+            'State': State,
+            'Place': Place,
+            'Review': Review
+        }
 
-        if not os.path.exists(FileStorage.__file_path):
+        if not os.path.exists(FileStorage.__path):
             return
 
-        with open(FileStorage.__file_path, 'r') as f:
+        with open(FileStorage.__path, 'r') as f:
             deserialized = None
 
             try:
@@ -68,6 +72,6 @@ class FileStorage():
             if deserialized is None:
                 return
 
-            FileStorage.__objects = {
+            FileStorage.__object = {
                 k: current_classes[k.split('.')[0]](**v)
                 for k, v in deserialized.items()}

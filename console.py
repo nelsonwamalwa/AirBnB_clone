@@ -11,7 +11,7 @@ It allows us to interactively and non-interactively:
     - manage (create, update, destroy, etc) objects via a console / interpreter
     - store and persist objects to a file (JSON file)
 
-Typical usage example:
+usage example:
 
     $ ./console
     (hbnb)
@@ -57,8 +57,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     def precmd(self, line):
-        """Defines instructions to execute before <line> is interpreted.
-        """
+        """ Defines instructions to execute before <line> is interpreted. """
         if not line:
             return '\n'
 
@@ -95,24 +94,20 @@ class HBNBCommand(cmd.Cmd):
                     re.sub("[\"\']", "", args[1]), args[2])
 
     def do_help(self, arg):
-        """To get help on a command, type help <topic>.
-        """
+        """ To get help on a command, type help <topic>. """
         return super().do_help(arg)
 
     def do_EOF(self, line):
-        """Inbuilt EOF command to gracefully catch errors.
-        """
+        """ Built-In EOF command to catch errors when necessary. """
         print("")
         return True
 
     def do_quit(self, arg):
-        """Quit command to exit the program.
-        """
+        """ Quit command to exit the program. """
         return True
 
     def emptyline(self):
-        """Override default `empty line + return` behaviour.
-        """
+        """ Override default `empty line + return` behaviour. """
         pass
 
     def do_create(self, arg):
@@ -127,8 +122,7 @@ class HBNBCommand(cmd.Cmd):
         print(NewObject.id)
 
     def do_show(self, arg):
-        """Prints the string representation of an instance.
-        """
+        """ Show the string representation of an instance. """
         args = arg.split()
         if not validate_classname(args, CheckId=True):
             return
@@ -142,8 +136,7 @@ class HBNBCommand(cmd.Cmd):
         print(RequestInstance)
 
     def do_destroy(self, arg):
-        """Deletes an instance based on the class name and id.
-        """
+        """ Destory instance based on the class name and id. """
         args = arg.split()
         if not validate_classname(args, CheckId=True):
             return
@@ -159,8 +152,7 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def do_all(self, arg):
-        """Prints string representation of all instances.
-        """
+        """Do print string representation of all instances. """
         args = arg.split()
         AllObject = storage.all()
 
@@ -176,8 +168,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
     def do_update(self, arg: str):
-        """Updates an instance based on the class name and id.
-        """
+        """ Do update of instance based on the class name and id."""
         args = arg.split(maxsplit=3)
         if not validate_classname(args, CheckId=True):
             return
@@ -213,8 +204,7 @@ class HBNBCommand(cmd.Cmd):
 
 
 def validate_classname(args, CheckId=False):
-    """Runs checks on args to validate classname entry.
-    """
+    """Runs Validation on args classname entry. """
     if len(args) < 1:
         print("** class name missing **")
         return False
@@ -228,8 +218,7 @@ def validate_classname(args, CheckId=False):
 
 
 def validate_attrs(args):
-    """Runs checks on args to validate classname attributes and values.
-    """
+    """Runs validations on args classname attributes and values."""
     if len(args) < 3:
         print("** attribute name missing **")
         return False
@@ -240,8 +229,7 @@ def validate_attrs(args):
 
 
 def is_float(x):
-    """Checks if `x` is float.
-    """
+    """Checks for float value passed in the function `is_float`"""
     try:
         a = float(x)
     except (TypeError, ValueError):
@@ -251,8 +239,7 @@ def is_float(x):
 
 
 def is_int(x):
-    """Checks if `x` is int.
-    """
+    """Checks for integer value passed in the function `is_int`"""
     try:
         a = float(x)
         b = int(a)
@@ -263,8 +250,7 @@ def is_int(x):
 
 
 def parse_str(arg):
-    """Parse `arg` to an `int`, `float` or `string`.
-    """
+    """ Parse through `args` to integer, float or string. """
     parsed = re.sub("\"", "", arg)
 
     if is_int(parsed):

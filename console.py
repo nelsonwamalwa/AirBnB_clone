@@ -50,7 +50,7 @@ class HBNBCommand(cmd.Cmd):
     in the console and calls the appropriate storage engine APIs to manipulate
     application data / models.
 
-    It sub-classes Python's `cmd.Cmd` class which provides a simple framework
+    The  sub-classes Python's `cmd.Cmd` class which provides a simple framework
     for writing line-oriented command interpreters.
     """
 

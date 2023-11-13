@@ -28,10 +28,10 @@ class TestFileStorage_instantiation(unittest.TestCase):
             FileStorage(None)
 
     def test_FileStorage_file_path_is_private_str(self):
-        self.assertEqual(str, type(FileStorage._FileStorage__file_path))
+        self.assertEqual(str, type(FileStorage.FilePath))
 
     def testFileStorage_objects_is_private_dict(self):
-        self.assertEqual(dict, type(FileStorage._FileStorage__objects))
+        self.assertEqual(dict, type(FileStorage.Object))
 
     def test_storage_initializes(self):
         self.assertEqual(type(models.storage), FileStorage)
@@ -45,9 +45,9 @@ class TestFileStorage_methods(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        FileStorage._FileStorage__objects = {}
-        if os.path.exists(FileStorage._FileStorage__file_path):
-            os.remove(FileStorage._FileStorage__file_path)
+        FileStorage.Object = {}
+        if os.path.exists(FileStorage.FilePath):
+            os.remove(FileStorage.FilePath)
 
     def test_all(self):
         self.assertEqual(dict, type(models.storage.all()))
@@ -142,7 +142,7 @@ class TestFileStorage_methods(unittest.TestCase):
         models.storage.new(rv)
         models.storage.save()
         models.storage.reload()
-        objs = FileStorage._FileStorage__objects
+        objs = FileStorage.Object
         self.assertIn("BaseModel." + bm.id, objs)
         self.assertIn("User." + us.id, objs)
         self.assertIn("State." + st.id, objs)

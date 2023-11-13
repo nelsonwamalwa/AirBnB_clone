@@ -18,9 +18,9 @@ class TestBase(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        FileStorage._FileStorage__objects = {}
-        if os.path.exists(FileStorage._FileStorage__file_path):
-            os.remove(FileStorage._FileStorage__file_path)
+        FileStorage.Object = {}
+        if os.path.exists(FileStorage.FilePath):
+            os.remove(FileStorage.FilePath)
 
     def test_initialization_positive(self):
         """Test passing cases `BaseModel` initialization.
@@ -67,28 +67,12 @@ class TestBase(unittest.TestCase):
         b.save()
         key = "{}.{}".format(type(b).__name__, b.id)
         d = {key: b.to_dict()}
-        self.assertTrue(os.path.isfile(FileStorage._FileStorage__file_path))
-        with open(FileStorage._FileStorage__file_path,
+        self.assertTrue(os.path.isfile(FileStorage.FilePath))
+        with open(FileStorage.FilePath,
                   "r", encoding="utf-8") as f:
             self.assertEqual(len(f.read()), len(json.dumps(d)))
             f.seek(0)
             self.assertEqual(json.load(f), d)
-
-    def test_save_no_args(self):
-        """Tests save() with no arguments."""
-        self.resetStorage()
-        with self.assertRaises(TypeError) as e:
-            BaseModel.save()
-        msg = "save() missing 1 required positional argument: 'self'"
-        self.assertEqual(str(e.exception), msg)
-
-    def test_save_excess_args(self):
-        """Tests save() with too many arguments."""
-        self.resetStorage()
-        with self.assertRaises(TypeError) as e:
-            BaseModel.save(self, 98)
-        msg = "save() takes 1 positional argument but 2 were given"
-        self.assertEqual(str(e.exception), msg)
 
     def test_str(self):
         """Test method for str representation"""

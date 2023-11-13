@@ -3,25 +3,25 @@ from models import storage
 from models.base_model import BaseModel
 from models.user import User
 
-all_objs = storage.all()
+AllObjects = storage.all()
 print("-- Reloaded objects --")
-for obj_id in all_objs.keys():
-    obj = all_objs[obj_id]
+for ObjectId in AllObjects.keys():
+    obj = AllObjects[ObjectId]
     print(obj)
 
 print("-- Create a new User --")
-my_user = User()
-my_user.first_name = "Betty"
-my_user.last_name = "Bar"
-my_user.email = "airbnb@mail.com"
-my_user.password = "root"
-my_user.save()
-print(my_user)
+MyUser = User()
+MyUser.first_name = "Betty"
+MyUser.last_name = "Bar"
+MyUser.email = "airbnb@mail.com"
+MyUser.password = "root"
+MyUser.save()
+print(MyUser)
 
 print("-- Create a new User 2 --")
-my_user2 = User()
-my_user2.first_name = "John"
-my_user2.email = "airbnb2@mail.com"
-my_user2.password = "root"
-my_user2.save()
-print(my_user2)
+MyUser2 = User()
+MyUser2.first_name = "John"
+MyUser2.email = "airbnb2@mail.com"
+MyUser2.password = "root"
+MyUser2.save()
+print(MyUser2)

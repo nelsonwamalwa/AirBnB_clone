@@ -26,9 +26,9 @@ class TestConsole(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        storage._FileStorage__objects = {}
-        if os.path.exists(storage._FileStorage__file_path):
-            os.remove(storage._FileStorage__file_path)
+        storage.Object = {}
+        if os.path.exists(storage.FilePath):
+            os.remove(storage.FilePath)
 
     def test_simple(self):
         """Tests basic commands.
@@ -151,9 +151,9 @@ class TestBaseModel(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        storage._FileStorage__objects = {}
-        if os.path.exists(storage._FileStorage__file_path):
-            os.remove(storage._FileStorage__file_path)
+        storage.Object = {}
+        if os.path.exists(storage.FilePath):
+            os.remove(storage.FilePath)
 
     def test_create_basemodel(self):
         """Test create basemodel object.
@@ -233,9 +233,9 @@ class TestBaseModelDotNotation(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        storage._FileStorage__objects = {}
-        if os.path.exists(storage._FileStorage__file_path):
-            os.remove(storage._FileStorage__file_path)
+        storage.Object = {}
+        if os.path.exists(storage.FilePath):
+            os.remove(storage.FilePath)
 
     def test_create_basemodel(self):
         """Test create basemodel object.
@@ -335,9 +335,9 @@ class TestUser(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        storage._FileStorage__objects = {}
-        if os.path.exists(storage._FileStorage__file_path):
-            os.remove(storage._FileStorage__file_path)
+        storage.Object = {}
+        if os.path.exists(storage.FilePath):
+            os.remove(storage.FilePath)
 
     def test_create_user(self):
         """Test create user object.
@@ -417,9 +417,9 @@ class TestUserDotNotation(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        storage._FileStorage__objects = {}
-        if os.path.exists(storage._FileStorage__file_path):
-            os.remove(storage._FileStorage__file_path)
+        storage.Object = {}
+        if os.path.exists(storage.FilePath):
+            os.remove(storage.FilePath)
 
     def test_create_user(self):
         """Test create user object.
@@ -519,9 +519,9 @@ class TestState(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        storage._FileStorage__objects = {}
-        if os.path.exists(storage._FileStorage__file_path):
-            os.remove(storage._FileStorage__file_path)
+        storage.Object = {}
+        if os.path.exists(storage.FilePath):
+            os.remove(storage.FilePath)
 
     def test_create_state(self):
         """Test create state object.
@@ -594,9 +594,9 @@ class TestStateDotNotation(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        storage._FileStorage__objects = {}
-        if os.path.exists(storage._FileStorage__file_path):
-            os.remove(storage._FileStorage__file_path)
+        storage.Object = {}
+        if os.path.exists(storage.FilePath):
+            os.remove(storage.FilePath)
 
     def test_create_state(self):
         """Test create state object.
@@ -696,9 +696,9 @@ class TestReview(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        storage._FileStorage__objects = {}
-        if os.path.exists(storage._FileStorage__file_path):
-            os.remove(storage._FileStorage__file_path)
+        storage.Object = {}
+        if os.path.exists(storage.FilePath):
+            os.remove(storage.FilePath)
 
     def test_create_review(self):
         """Test create review object.
@@ -771,9 +771,9 @@ class TestReviewDotNotation(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        storage._FileStorage__objects = {}
-        if os.path.exists(storage._FileStorage__file_path):
-            os.remove(storage._FileStorage__file_path)
+        storage.Object = {}
+        if os.path.exists(storage.FilePath):
+            os.remove(storage.FilePath)
 
     def test_create_review(self):
         """Test create review object.
@@ -873,9 +873,9 @@ class TestPlace(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        storage._FileStorage__objects = {}
-        if os.path.exists(storage._FileStorage__file_path):
-            os.remove(storage._FileStorage__file_path)
+        storage.Object = {}
+        if os.path.exists(storage.FilePath):
+            os.remove(storage.FilePath)
 
     def test_create_place(self):
         """Test create place object.
@@ -948,9 +948,9 @@ class TestPlaceDotNotation(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        storage._FileStorage__objects = {}
-        if os.path.exists(storage._FileStorage__file_path):
-            os.remove(storage._FileStorage__file_path)
+        storage.Object = {}
+        if os.path.exists(storage.FilePath):
+            os.remove(storage.FilePath)
 
     def test_create_place(self):
         """Test create place object.
@@ -1050,9 +1050,9 @@ class TestAmenity(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        storage._FileStorage__objects = {}
-        if os.path.exists(storage._FileStorage__file_path):
-            os.remove(storage._FileStorage__file_path)
+        storage.Object = {}
+        if os.path.exists(storage.FilePath):
+            os.remove(storage.FilePath)
 
     def test_create_amenity(self):
         """Test create amenity object.
@@ -1125,9 +1125,9 @@ class TestAmenityDotNotation(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        storage._FileStorage__objects = {}
-        if os.path.exists(storage._FileStorage__file_path):
-            os.remove(storage._FileStorage__file_path)
+        storage.Object = {}
+        if os.path.exists(storage.FilePath):
+            os.remove(storage.FilePath)
 
     def test_create_amenity(self):
         """Test create amenity object.
@@ -1227,9 +1227,9 @@ class TestCity(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        storage._FileStorage__objects = {}
-        if os.path.exists(storage._FileStorage__file_path):
-            os.remove(storage._FileStorage__file_path)
+        storage.Object = {}
+        if os.path.exists(storage.FilePath):
+            os.remove(storage.FilePath)
 
     def test_create_city(self):
         """Test create city object.
@@ -1302,9 +1302,9 @@ class TestCityDotNotation(unittest.TestCase):
 
     def tearDown(self) -> None:
         """Resets FileStorage data."""
-        storage._FileStorage__objects = {}
-        if os.path.exists(storage._FileStorage__file_path):
-            os.remove(storage._FileStorage__file_path)
+        storage.Object = {}
+        if os.path.exists(storage.FilePath):
+            os.remove(storage.FilePath)
 
     def test_create_city(self):
         """Test create city object.

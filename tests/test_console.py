@@ -67,14 +67,12 @@ class TestConsole(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("? all")
             self.assertIsInstance(f.getvalue(), str)
-            self.assertEqual(f.getvalue().strip(),
-                             "Prints string representation of all instances.")
+            self.assertEqual(f.getvalue().strip(), "Prints string representation of all instances.")
 
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help all")
             self.assertIsInstance(f.getvalue(), str)
-            self.assertEqual(f.getvalue().strip(),
-                             "Prints string representation of all instances.")
+            self.assertEqual(f.getvalue().strip(), "Prints string representation of all instances.")
 
         with patch('sys.stdout', new=StringIO()) as f:
             msg = "Prints the string representation of an instance."

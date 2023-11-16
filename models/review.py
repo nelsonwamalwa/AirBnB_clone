@@ -8,10 +8,7 @@ from models.base_model import BaseModel
 
 
 class Review(BaseModel):
-    """A review of a place/house.
-
-    It represents a review posted by the users
-    of the application about a place/house.
+    """A review of a place/house.It represents a review posted by the users  of the application about a place/house.
 
     Attributes:
         text

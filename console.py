@@ -11,7 +11,7 @@ It allows us to interactively and non-interactively:
     - manage (create, update, destroy, etc) objects via a console / interpreter
     - store and persist objects to a file (JSON file)
 
-Typical usage example:
+usage example:
 
     $ ./console
     (hbnb)
@@ -37,7 +37,7 @@ from models.review import Review
 from models.amenity import Amenity
 from models.place import Place
 
-current_classes = {'BaseModel': BaseModel, 'User': User,
+CurrentClasses = {'BaseModel': BaseModel, 'User': User,
                    'Amenity': Amenity, 'City': City, 'State': State,
                    'Place': Place, 'Review': Review}
 
@@ -57,62 +57,57 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     def precmd(self, line):
-        """Defines instructions to execute before <line> is interpreted.
-        """
+        """ Defines instructions to execute before <line> is interpreted. """
         if not line:
             return '\n'
 
         pattern = re.compile(r"(\w+)\.(\w+)\((.*)\)")
-        match_list = pattern.findall(line)
-        if not match_list:
+        MatchList = pattern.findall(line)
+        if not MatchList:
             return super().precmd(line)
 
-        match_tuple = match_list[0]
-        if not match_tuple[2]:
-            if match_tuple[1] == "count":
-                instance_objs = storage.all()
+        MatchTuple = MatchList[0]
+        if not MatchTuple[2]:
+            if MatchTuple[1] == "count":
+                ObjectInstances = storage.all()
                 print(len([
-                    v for _, v in instance_objs.items()
-                    if type(v).__name__ == match_tuple[0]]))
+                    j for _, j in ObjectInstances.items()
+                    if type(j).__name__ == MatchTuple[0]]))
                 return "\n"
-            return "{} {}".format(match_tuple[1], match_tuple[0])
+            return "{} {}".format(MatchTuple[1], MatchTuple[0])
         else:
-            args = match_tuple[2].split(", ")
+            args = MatchTuple[2].split(", ")
             if len(args) == 1:
                 return "{} {} {}".format(
-                    match_tuple[1], match_tuple[0],
-                    re.sub("[\"\']", "", match_tuple[2]))
+                    MatchTuple[1], MatchTuple[0],
+                    re.sub("[\"\']", "", MatchTuple[2]))
             else:
-                match_json = re.findall(r"{.*}", match_tuple[2])
-                if (match_json):
+                MatchJson = re.findall(r"{.*}", MatchTuple[2])
+                if (MatchJson):
                     return "{} {} {} {}".format(
-                        match_tuple[1], match_tuple[0],
+                        MatchTuple[1], MatchTuple[0],
                         re.sub("[\"\']", "", args[0]),
-                        re.sub("\'", "\"", match_json[0]))
+                        re.sub("\'", "\"", MatchJson[0]))
                 return "{} {} {} {} {}".format(
-                    match_tuple[1], match_tuple[0],
+                    MatchTuple[1], MatchTuple[0],
                     re.sub("[\"\']", "", args[0]),
                     re.sub("[\"\']", "", args[1]), args[2])
 
     def do_help(self, arg):
-        """To get help on a command, type help <topic>.
-        """
+        """ To get help on a command, type help <topic>. """
         return super().do_help(arg)
 
     def do_EOF(self, line):
-        """Inbuilt EOF command to gracefully catch errors.
-        """
+        """ Built-In EOF command to catch errors when necessary. """
         print("")
         return True
 
     def do_quit(self, arg):
-        """Quit command to exit the program.
-        """
+        """ Quit command to exit the program. """
         return True
 
     def emptyline(self):
-        """Override default `empty line + return` behaviour.
-        """
+        """ Override default `empty line + return` behaviour. """
         pass
 
     def do_create(self, arg):
@@ -122,114 +117,108 @@ class HBNBCommand(cmd.Cmd):
         if not validate_classname(args):
             return
 
-        new_obj = current_classes[args[0]]()
-        new_obj.save()
-        print(new_obj.id)
+        NewObject = CurrentClasses[args[0]]()
+        NewObject.save()
+        print(NewObject.id)
 
     def do_show(self, arg):
-        """Prints the string representation of an instance.
-        """
+        """ Show the string representation of an instance. """
         args = arg.split()
-        if not validate_classname(args, check_id=True):
+        if not validate_classname(args, CheckId=True):
             return
 
-        instance_objs = storage.all()
+        ObjectInstances = storage.all()
         key = "{}.{}".format(args[0], args[1])
-        req_instance = instance_objs.get(key, None)
-        if req_instance is None:
+        RequestInstance = ObjectInstances.get(key, None)
+        if RequestInstance is None:
             print("** no instance found **")
             return
-        print(req_instance)
+        print(RequestInstance)
 
     def do_destroy(self, arg):
-        """Deletes an instance based on the class name and id.
-        """
+        """ Destory instance based on the class name and id. """
         args = arg.split()
-        if not validate_classname(args, check_id=True):
+        if not validate_classname(args, CheckId=True):
             return
 
-        instance_objs = storage.all()
+        ObjectInstances = storage.all()
         key = "{}.{}".format(args[0], args[1])
-        req_instance = instance_objs.get(key, None)
-        if req_instance is None:
+        RequestInstance = ObjectInstances.get(key, None)
+        if RequestInstance is None:
             print("** no instance found **")
             return
 
-        del instance_objs[key]
+        del ObjectInstances[key]
         storage.save()
 
     def do_all(self, arg):
-        """Prints string representation of all instances.
-        """
+        """Do print string representation of all instances. """
         args = arg.split()
-        all_objs = storage.all()
+        AllObject = storage.all()
 
         if len(args) < 1:
-            print(["{}".format(str(v)) for _, v in all_objs.items()])
+            print(["{}".format(str(j)) for _, j in AllObject.items()])
             return
-        if args[0] not in current_classes.keys():
+        if args[0] not in CurrentClasses.keys():
             print("** class doesn't exist **")
             return
         else:
-            print(["{}".format(str(v))
-                  for _, v in all_objs.items() if type(v).__name__ == args[0]])
+            print(["{}".format(str(j))
+                  for _, j in AllObject.items() if type(j).__name__ == args[0]])
             return
 
     def do_update(self, arg: str):
-        """Updates an instance based on the class name and id.
-        """
+        """ Do update of instance based on the class name and id."""
         args = arg.split(maxsplit=3)
-        if not validate_classname(args, check_id=True):
+        if not validate_classname(args, CheckId=True):
             return
 
-        instance_objs = storage.all()
+        ObjectInstances = storage.all()
         key = "{}.{}".format(args[0], args[1])
-        req_instance = instance_objs.get(key, None)
-        if req_instance is None:
+        RequestInstance = ObjectInstances.get(key, None)
+        if RequestInstance is None:
             print("** no instance found **")
             return
 
-        match_json = re.findall(r"{.*}", arg)
-        if match_json:
+        MatchJson = re.findall(r"{.*}", arg)
+        if MatchJson:
             payload = None
             try:
-                payload: dict = json.loads(match_json[0])
+                payload: dict = json.loads(MatchJson[0])
             except Exception:
                 print("** invalid syntax")
                 return
-            for k, v in payload.items():
-                setattr(req_instance, k, v)
+            for i, j in payload.items():
+                setattr(RequestInstance, i, j)
             storage.save()
             return
         if not validate_attrs(args):
             return
-        first_attr = re.findall(r"^[\"\'](.*?)[\"\']", args[3])
-        if first_attr:
-            setattr(req_instance, args[2], first_attr[0])
+        FistAttribute = re.findall(r"^[\"\'](.*?)[\"\']", args[3])
+        if FistAttribute:
+            setattr(RequestInstance, args[2], FistAttribute[0])
         else:
-            value_list = args[3].split()
-            setattr(req_instance, args[2], parse_str(value_list[0]))
+            ValueList = args[3].split()
+            setattr(RequestInstance, args[2], parse_str(ValueList[0]))
         storage.save()
 
 
-def validate_classname(args, check_id=False):
-    """Runs checks on args to validate classname entry.
-    """
+def validate_classname(args, CheckId=False):
+    """Runs Validation on args classname entry. """
     if len(args) < 1:
         print("** class name missing **")
         return False
-    if args[0] not in current_classes.keys():
+    if args[0] not in CurrentClasses.keys():
         print("** class doesn't exist **")
         return False
-    if len(args) < 2 and check_id:
+    if len(args) < 2 and CheckId:
         print("** instance id missing **")
         return False
     return True
 
 
 def validate_attrs(args):
-    """Runs checks on args to validate classname attributes and values.
-    """
+    """Runs validations on args classname attributes and values."""
     if len(args) < 3:
         print("** attribute name missing **")
         return False
@@ -240,8 +229,7 @@ def validate_attrs(args):
 
 
 def is_float(x):
-    """Checks if `x` is float.
-    """
+    """Checks for float value passed in the function `is_float`"""
     try:
         a = float(x)
     except (TypeError, ValueError):
@@ -251,8 +239,7 @@ def is_float(x):
 
 
 def is_int(x):
-    """Checks if `x` is int.
-    """
+    """Checks for integer value passed in the function `is_int`"""
     try:
         a = float(x)
         b = int(a)
@@ -263,8 +250,7 @@ def is_int(x):
 
 
 def parse_str(arg):
-    """Parse `arg` to an `int`, `float` or `string`.
-    """
+    """ Parse through `args` to integer, float or string. """
     parsed = re.sub("\"", "", arg)
 
     if is_int(parsed):

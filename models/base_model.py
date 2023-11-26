@@ -9,14 +9,12 @@ from datetime import datetime
 
 class BaseModel():
     """
-    Base class which defines all common
-    attributes/methods for other classes
+    Base class which defines all future classes and methods
     """
 
     def __init__(self, *args, **kwargs):
         """
-        instatiates an object with it's
-        attributes
+        Initializes the class attributes.
         """
         if len(kwargs) > 0:
             for key, value in kwargs.items():
@@ -35,28 +33,25 @@ class BaseModel():
 
     def __str__(self):
         """
-        Returns the string representation
-        of the instance
+        Returns the string representation of the instances
         """
         return "[{}] ({}) {}".format(
             type(self).__name__, self.id, self.__dict__)
 
     def save(self):
         """
-        updates the public instance attribute
-        updated_at with the current datetime
+        updates the public instance attribute updated_at with the current datetime
         """
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
         """
-        returns a dictionary containing all keys/values
-        of __dict__ of the instance
+        returns a dictionary containing all keys/values of __dict__ of the instance
         """
-        dict = {**self.__dict__}
-        dict['__class__'] = type(self).__name__
-        dict['created_at'] = dict['created_at'].isoformat()
-        dict['updated_at'] = dict['updated_at'].isoformat()
+        AddDictionary = {**self.__dict__}
+        AddDictionary['__class__'] = type(self).__name__
+        AddDictionary['created_at'] = AddDictionary['created_at'].isoformat()
+        AddDictionary['updated_at'] = AddDictionary['updated_at'].isoformat()
 
-        return dict
+        return AddDictionary

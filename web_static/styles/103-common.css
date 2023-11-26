@@ -1,0 +1,72 @@
+/****************************************************************************/
+/* The reset css */
+/****************************************************************************/
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	border: none;
+	outline: none;
+}
+/****************************************************************************/
+/* The common styles */
+/****************************************************************************/
+html {
+  box-sizing: border-box;
+}
+
+/****************************************************************************/
+/* The mobile first resposive */
+/****************************************************************************/
+
+/* Extra small sized devices (phones, 600px and down) */
+/* @media only screen and (max-width: 600px) */
+body {
+	font-size: 14px;
+	font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  width: 100%;
+  color: #484848;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+span {
+	color: #000000;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 2rem auto;
+}
+
+/*****************************/
+/* The index
+/*****************************/
+.container {
+	z-index: 0;
+}
+.div_price_by_night {
+	z-index: 10;
+}
+* {
+	z-index: inherit;
+}
+
+/* Small sized devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+/* All medium sized devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+}
+/* All large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+	body {
+		max-width: 1920px;
+		margin: 0 auto;
+	}
+}

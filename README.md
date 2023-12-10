@@ -26,11 +26,11 @@ A command interpreter to manipulate data without a visual interface, like in a S
        $ pip install -r requirements.txt
    ```
 
-or
+   or
 
-    ```bash
-        $ pip3 install -r requirements.txt
-    ```
+   ```bash
+       $ pip3 install -r requirements.txt
+   ```
 
 4. Run the console script and happy hBnB ⛪.
 

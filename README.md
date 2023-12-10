@@ -1,8 +1,9 @@
 # 0x00 AirBnB Clone - Console
 
 <div align="center">
-<img src="https://app.eraser.io/workspace/wVYZd6Ahg1T1ltf2edP4/preview?elements=IYAAFqs-ukkUSFLBFW7wdg&type=embed" width="400px"/>
+<img src="https://app.eraser.io/workspace/wVYZd6Ahg1T1ltf2edP4/preview?elements=IYAAFqs-ukkUSFLBFW7wdg&type=embed" />
 </div>
+
 A command interpreter to manipulate data without a visual interface, like in a Shell (perfect for development and debugging)
 
 ## Installation
@@ -15,27 +16,27 @@ A command interpreter to manipulate data without a visual interface, like in a S
 
 2. Move one step into the repository with a `cd` command:
 
-```bash
-    $ cd AirBnB_clone
-```
+   ```bash
+       $ cd AirBnB_clone
+   ```
 
-3. Install all necessary dependencies through the requirements.txt file:
+3. Install all necessary dependencies through the `requirements.txt` file:
 
-```bash
-    $ pip install -r requirements.txt
-```
+   ```bash
+       $ pip install -r requirements.txt
+   ```
 
 or
 
-```bash
-    $ pip3 install -r requirements.txt
-```
+    ```bash
+        $ pip3 install -r requirements.txt
+    ```
 
 4. Run the console script and happy hBnB ⛪.
 
-```bash
-    $ ./console.py
-```
+   ```bash
+       $ ./console.py
+   ```
 
 ## Usage
 

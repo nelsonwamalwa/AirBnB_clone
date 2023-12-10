@@ -53,7 +53,15 @@ class HBNBCommand(cmd.Cmd):
     The  sub-classes Python's `cmd.Cmd` class which provides a simple framework
     for writing line-oriented command interpreters.
     """
-
+    intro = """
+    ============= HBNB THE CONSOLE =============
+    |  ||        ||||||||           ||||||||   |
+    |  ||        ||    ||           ||    ||   |
+    |  ||||||||  ||||||    |||||||  ||||||     |
+    |  ||    ||  ||    ||  ||   ||  ||    ||   |
+    |  ||    ||  ||||||||  ||   ||  ||||||||   |
+    ============================================
+"""
     prompt = "(hbnb) "
 
     def precmd(self, line):

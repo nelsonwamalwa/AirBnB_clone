@@ -11,7 +11,6 @@ class BaseModel():
     """
     Base class which defines all future classes and methods
     """
-
     def __init__(self, *args, **kwargs):
         """
         Initializes the class attributes.

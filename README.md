@@ -1,5 +1,8 @@
 # 0x00 AirBnB Clone - Console
 
+<div align="center">
+<img src="https://app.eraser.io/workspace/wVYZd6Ahg1T1ltf2edP4?elements=IYAAFqs-ukkUSFLBFW7wdg" alt="AirBnB clone web instructure Design">
+</div>
 A command interpreter to manipulate data without a visual interface, like in a Shell (perfect for development and debugging)
 
 ## Installation
@@ -17,6 +20,7 @@ A command interpreter to manipulate data without a visual interface, like in a S
 ## Usage
 
 ### Basic Usage
+
 Typical usage example:
 
 ```bash
@@ -32,6 +36,7 @@ Typical usage example:
     (hbnb) quit
     $
 ```
+
 ### Options
 
 ### Examples

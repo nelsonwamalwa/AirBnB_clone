@@ -1,7 +1,7 @@
 # 0x00 AirBnB Clone - Console
 
 <div align="center">
-<img src="https://app.eraser.io/workspace/wVYZd6Ahg1T1ltf2edP4?elements=IYAAFqs-ukkUSFLBFW7wdg" alt="AirBnB clone web instructure Design">
+<img src="https://app.eraser.io/workspace/wVYZd6Ahg1T1ltf2edP4/preview?elements=IYAAFqs-ukkUSFLBFW7wdg&type=embed" />
 </div>
 A command interpreter to manipulate data without a visual interface, like in a Shell (perfect for development and debugging)
 

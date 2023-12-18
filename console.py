@@ -115,7 +115,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def emptyline(self):
-        """ Override default `empty line + return` behaviour. """
+        """ Override `empty line + return` behaviour. """
         pass
 
     def do_create(self, arg):

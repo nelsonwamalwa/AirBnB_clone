@@ -45,7 +45,7 @@ CurrentClasses = {'BaseModel': BaseModel, 'User': User,
 class HBNBCommand(cmd.Cmd):
     """The command interpreter.
 
-    This class represents the command interpreter, and the control center
+    This class represent the command interpreter, and the control center
     of this project. It defines function handlers for all commands inputted
     in the console and calls the appropriate storage engine APIs to manipulate
     application data / models.
